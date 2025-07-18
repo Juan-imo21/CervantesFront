@@ -1,10 +1,10 @@
-# Proyecto de Sistemas 3 - FrontEnd
+# Proyecto de Practica Profesionalizante - FrontEnd
 
-Este repositorio contiene el código fuente del FrontEnd desarrollado para el proyecto de Sistemas 3.
+Este repositorio contiene el código fuente del FrontEnd desarrollado para el proyecto de Practica Profesionalizante.
 
 ## Descripción
 
-Este proyecto constituye la parte del cliente del sistema de gestión integral desarrollado para la asignatura de Sistemas 3. El FrontEnd está construido utilizando tecnologías web modernas como HTML, CSS y JavaScript, con frameworks como React.js para facilitar el desarrollo y la interacción con el usuario.
+Este proyecto constituye la parte del cliente del sistema de gestión integral desarrollado para la asignatura de Practica Profesionalizante. El FrontEnd está construido utilizando tecnologías web modernas como HTML, CSS y JavaScript, con frameworks como React.js para facilitar el desarrollo y la interacción con el usuario.
 
 ## Funcionalidades
 
