@@ -61,7 +61,7 @@ const [errores, setErrores] = useState({});
 
   const metodo = modoEdicion ? "PUT" : "POST";
   const url = modoEdicion ? `${API_URL}/${clienteActual.iD_CLIENTES}` : API_URL;
-
+  if (!modoEdicion) delete clienteActual.iD_CLIENTES;
   const res = await fetch(url, {
     method: metodo,
     headers: { "Content-Type": "application/json" },
