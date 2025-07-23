@@ -197,7 +197,7 @@ setErroresPedido({});
         )
     );
     return (
-        <div className="min-h-screen text-white flex flex-col">
+        <div className="min-h-screen text-white flex flex-col overflow-hidden">
             <CustomNavbar />
             <div className="container mx-auto px-4 py-6 mt-24">
                 <div className="flex justify-between items-center mb-4">
@@ -214,8 +214,8 @@ setErroresPedido({});
                     value={busqueda}
                     onChange={(e) => setBusqueda(e.target.value)}
                 />
-
-                <table className="min-w-full bg-zinc-900 text-white rounded-lg overflow-hidden">
+                <div className="overflow-x-auto rounded-lg">
+                <table className="min-w-full bg-zinc-900 text-white rounded-lg">
                     <thead>
                         <tr>
                             <th className="px-4 py-2">Cliente</th>
@@ -248,6 +248,7 @@ setErroresPedido({});
                         ))}
                     </tbody>
                 </table>
+                </div>
             </div>
             {/* Modal */}
             {modalVisible && (

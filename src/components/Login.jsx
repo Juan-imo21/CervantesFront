@@ -18,6 +18,7 @@ export default function Login() {
   const [nuevaPass, setNuevaPass] = useState("");
   const [confirmarPass, setConfirmarPass] = useState("");
   const [errorRecuperacion, setErrorRecuperacion] = useState("");
+  const [modalExito, setModalExito] = useState(false);
 
   const handleLogin = async () => {
     setError("");
@@ -105,7 +106,7 @@ export default function Login() {
 
       if (res.ok) {
         setModalNuevaPass(false);
-        alert("Contraseña actualizada correctamente. Inicie sesión.");
+        setModalExito(true);
       } else {
         setErrorRecuperacion(data.mensaje || "No se pudo cambiar la contraseña.");
       }
@@ -224,6 +225,20 @@ export default function Login() {
           </div>
         </div>
       )}
+      {modalExito && (
+  <div className="fixed inset-0 bg-opacity-70 flex items-center justify-center z-50">
+    <div className="bg-zinc-800 p-6 rounded-lg w-full max-w-sm text-white text-center">
+      <h3 className="text-lg mb-3 text-green-400">¡Contraseña actualizada!</h3>
+      <p className="mb-5">La contraseña se cambió correctamente.<br />Ya puede iniciar sesión con la nueva contraseña.</p>
+      <button
+        onClick={() => setModalExito(false)}
+        className="bg-yellow-400 text-black px-5 py-2 rounded hover:bg-yellow-300 font-semibold"
+      >
+        Volver al login
+      </button>
+    </div>
+  </div>
+)}
     </div>
   );
 }

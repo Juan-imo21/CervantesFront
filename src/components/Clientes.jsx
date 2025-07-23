@@ -95,11 +95,11 @@ const eliminarCliente = async () => {
   );
 
   return (
-    <div className="min-h-screen  text-white flex flex-col">
+    <div className="min-h-screen text-white flex flex-col overflow-hidden">
       <CustomNavbar />
       <div className="container mx-auto px-4 py-6 mt-24">
         {/* Encabezado y botón */}
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center items-start gap-2 mb-4">
           <h2 className="text-2xl font-bold">Clientes</h2>
           <button className="bg-yellow-400 hover:bg-yellow-300 text-black font-semibold py-2 px-4 rounded" onClick={abrirModalNuevo}>
             Agregar Cliente
@@ -116,7 +116,7 @@ const eliminarCliente = async () => {
         />
 
         {/* Tabla */}
-        <div className="w-full overflow-x-auto">
+        <div className="w-full max-w-5xl mx-auto overflow-x-auto rounded-lg bg-transparent">
           <table className="min-w-[700px] bg-zinc-900 text-white rounded-lg overflow-hidden">
             <thead>
               <tr>
