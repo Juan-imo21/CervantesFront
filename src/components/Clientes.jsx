@@ -8,6 +8,7 @@ export default function Clientes() {
   const [modoEdicion, setModoEdicion] = useState(false);
   const [modalEliminarVisible, setModalEliminarVisible] = useState(false);
 const [clienteAEliminar, setClienteAEliminar] = useState(null);
+const [eliminarError, setEliminarError] = useState("");
   const [clienteActual, setClienteActual] = useState({
      iD_CLIENTES: null, razonSocial: "", cuit: "", direccion: "", telefono: "", email: "", nombre: ""
   });
@@ -79,12 +80,22 @@ const confirmarEliminar = (cliente) => {
 };
 const eliminarCliente = async () => {
   if (!clienteAEliminar) return;
+  setEliminarError(""); 
+  const resPedidos = await fetch("https://localhost:44367/api/Pedido");
+  const pedidos = await resPedidos.json();
 
+  const tienePedidos = pedidos.some(p => p.iD_CLIENTE === clienteAEliminar.iD_CLIENTES);
+
+  if (tienePedidos) {
+    setEliminarError("No se puede eliminar el cliente porque tiene pedidos asociados.");
+    return;
+  }
   const res = await fetch(`${API_URL}/${clienteAEliminar.iD_CLIENTES}`, { method: "DELETE" });
   if (res.ok) {
     fetchClientes();
     setModalEliminarVisible(false);
     setClienteAEliminar(null);
+     setEliminarError("");
   }
 };
 
@@ -117,7 +128,7 @@ const eliminarCliente = async () => {
 
         {/* Tabla */}
         <div className="w-full max-w-5xl mx-auto overflow-x-auto rounded-lg bg-transparent">
-          <table className="min-w-[700px] bg-zinc-900 text-white rounded-lg overflow-hidden">
+          <table className="min-w-[900px] bg-zinc-900 text-white rounded-lg overflow-hidden">
             <thead>
               <tr>
                 <th className="px-4 py-2">Razón Social</th>
@@ -138,7 +149,7 @@ const eliminarCliente = async () => {
                   <td className="px-4 py-2">{cliente.telefono}</td>
                   <td className="px-4 py-2">{cliente.email}</td>
                   <td className="px-4 py-2">{cliente.nombre}</td>
-                  <td className="px-4 py-2 space-x-2">
+                  <td className="px-4 py-2">
   <button
     onClick={() => abrirModalEditar(cliente)}
     className="bg-blue-500 text-white px-2 py-1 rounded"
@@ -200,6 +211,37 @@ const eliminarCliente = async () => {
       <div className="flex justify-end space-x-2 mt-4">
         <button
           onClick={() => setModalEliminarVisible(false)}
+          className="px-4 py-2 bg-gray-400 text-black rounded"
+        >
+          Cancelar
+        </button>
+        <button
+          onClick={eliminarCliente}
+          className="px-4 py-2 bg-red-600 text-white rounded"
+        >
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+{modalEliminarVisible && (
+  <div className="fixed inset-0 bg-opacity-70 flex items-center justify-center z-50">
+    <div className="bg-zinc-800 p-6 rounded-lg w-full max-w-sm text-white">
+      <h2 className="text-xl mb-4">Confirmar Eliminación</h2>
+      <p>¿Estás seguro de que deseas eliminar al cliente <strong>{clienteAEliminar?.razonSocial}</strong>?</p>
+      {eliminarError && (
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 mb-4 rounded">
+          {eliminarError}
+        </div>
+      )}
+      <div className="flex justify-end space-x-2 mt-4">
+        <button
+          onClick={() => {
+            setModalEliminarVisible(false);
+            setClienteAEliminar(null);
+            setEliminarError("");
+          }}
           className="px-4 py-2 bg-gray-400 text-black rounded"
         >
           Cancelar

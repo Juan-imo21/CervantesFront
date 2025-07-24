@@ -541,7 +541,7 @@ setErroresPedido({});
                 className="w-full text-black mb-3 p-2 rounded"
                 value={pedidoEditar.fecha}
                 onChange={e =>
-                    setPedidoEditar(prev => ({ ...prev, FECHA: e.target.value }))
+                    setPedidoEditar(prev => ({ ...prev, fecha: e.target.value }))
                 }
             />
             <div className="flex justify-between items-center mb-3">
