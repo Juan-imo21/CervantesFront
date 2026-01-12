@@ -1,17 +1,11 @@
-# Proyecto de Practica Profesionalizante - FrontEnd
 
-Este repositorio contiene el código fuente del FrontEnd desarrollado para el proyecto de Practica Profesionalizante.
+  # Sistema Administrativo de Bebidas
 
-## Descripción
+  This is a code bundle for Sistema Administrativo de Bebidas. The original project is available at https://www.figma.com/design/nv7WjTON7itDpUFgdgUJbz/Sistema-Administrativo-de-Bebidas.
 
-Este proyecto constituye la parte del cliente del sistema de gestión integral desarrollado para la asignatura de Practica Profesionalizante. El FrontEnd está construido utilizando tecnologías web modernas como HTML, CSS y JavaScript, con frameworks como React.js para facilitar el desarrollo y la interacción con el usuario.
+  ## Running the code
 
-## Funcionalidades
+  Run `npm i` to install the dependencies.
 
-- **Interfaz de usuario intuitiva:** Diseño de una interfaz de usuario amigable y fácil de usar para los usuarios finales.
-- **Gestión de datos en tiempo real:** Interacción en tiempo real con el servidor para mostrar datos actualizados y permitir acciones instantáneas.
-- **Experiencia de usuario mejorada:** Utilización de técnicas de diseño y desarrollo web para proporcionar una experiencia de usuario agradable y eficiente.
-
-## Instalación
-
-Clona este repositorio en tu máquina local
+  Run `npm run dev` to start the development server.
+  
